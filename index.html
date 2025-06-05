@@ -3,647 +3,676 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>테트리스 게임</title>
+    <title>수학의 달인 - 1:1 맞춤 수학 전문학원</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body {
+        * {
             margin: 0;
-            padding: 20px;
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* 헤더 */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            font-family: 'Arial', sans-serif;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            min-height: 100vh;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
         }
-        
-        .game-container {
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .nav-links {
             display: flex;
-            gap: 30px;
-            align-items: flex-start;
+            list-style: none;
+            gap: 2rem;
         }
-        
-        .game-board {
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        /* 히어로 섹션 */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1509228468518-180dd4864904?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.6);
+        }
+
+        /* 섹션 공통 스타일 */
+        .section {
+            padding: 80px 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2c3e50;
             position: relative;
         }
-        
-        #gameCanvas {
-            border: 3px solid #fff;
-            background: #000;
-            box-shadow: 0 0 20px rgba(255,255,255,0.3);
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            margin: 1rem auto;
+            border-radius: 2px;
         }
-        
-        .game-info {
-            background: rgba(255,255,255,0.1);
-            padding: 20px;
-            border-radius: 10px;
-            backdrop-filter: blur(10px);
-            min-width: 200px;
+
+        /* 특징 섹션 */
+        .features {
+            background: #f8f9fa;
         }
-        
-        .score-section {
-            margin-bottom: 20px;
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
         }
-        
-        .score-item {
-            margin: 10px 0;
-            font-size: 16px;
-            font-weight: bold;
+
+        .feature-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-        
-        .controls {
-            margin: 20px 0;
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
-        
-        .btn {
+
+        .feature-icon {
+            font-size: 3rem;
+            color: #667eea;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        /* 성과 섹션 */
+        .achievements {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .achievement-item h3 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .achievement-item p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* 강사진 섹션 */
+        .teachers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .teacher-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .teacher-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .teacher-image {
             width: 100%;
-            height: 45px; /* 모든 버튼 높이 고정 */
-            padding: 0; /* 패딩 제거하여 크기 일정하게 */
-            margin: 8px 0;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .teacher-info {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .teacher-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        .teacher-info p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .teacher-speciality {
+            background: #e8f4f8;
+            color: #2980b9;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+        }
+
+        /* 후기 섹션 */
+        .reviews {
+            background: #f8f9fa;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .review-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .review-stars {
+            color: #ffd700;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .review-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .review-author {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        /* 연락처 섹션 */
+        .contact {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
             display: flex;
             align-items: center;
-            justify-content: center;
+            margin-bottom: 1.5rem;
         }
-        
-        .btn-start {
-            background: #4CAF50;
+
+        .contact-item i {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            color: #3498db;
+        }
+
+        .contact-form {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.9);
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
             color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s;
         }
-        
-        .btn-start:hover {
-            background: #45a049;
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
         }
-        
-        .btn-pause {
-            background: #ff9800;
+
+        /* 푸터 */
+        footer {
+            background: #2c3e50;
             color: white;
-        }
-        
-        .btn-pause:hover {
-            background: #e68900;
-        }
-        
-        .btn-reset {
-            background: #f44336;
-            color: white;
-        }
-        
-        .btn-reset:hover {
-            background: #da190b;
-        }
-        
-        .btn-sound {
-            background: #9C27B0;
-            color: white;
-        }
-        
-        .btn-sound:hover {
-            background: #7B1FA2;
-        }
-        
-        .btn:disabled {
-            background: #666;
-            cursor: not-allowed;
-        }
-        
-        .game-status {
             text-align: center;
-            font-size: 18px;
-            font-weight: bold;
-            margin: 15px 0;
-            padding: 10px;
-            border-radius: 5px;
-            background: rgba(0,0,0,0.3);
+            padding: 2rem 0;
         }
-        
-        .instructions {
-            margin-top: 20px;
-            font-size: 12px;
-            line-height: 1.5;
-            opacity: 0.8;
+
+        /* 반응형 */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .section {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
         }
-        
-        .next-piece {
-            margin: 20px 0;
-            text-align: center;
+
+        /* 애니메이션 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        
-        #nextCanvas {
-            border: 2px solid #fff;
-            background: #000;
-            margin-top: 10px;
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
         }
-        
-        .sound-status {
-            font-size: 12px;
-            text-align: center;
-            margin-top: 5px;
-            opacity: 0.7;
+
+        /* 스크롤 효과 */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease-out;
+        }
+
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
-    <div class="game-container">
-        <div class="game-board">
-            <canvas id="gameCanvas" width="300" height="600"></canvas>
+    <!-- 헤더 -->
+    <header>
+        <nav>
+            <div class="logo">🧮 수학의 달인</div>
+            <ul class="nav-links">
+                <li><a href="#home">홈</a></li>
+                <li><a href="#features">특징</a></li>
+                <li><a href="#teachers">강사진</a></li>
+                <li><a href="#reviews">후기</a></li>
+                <li><a href="#contact">문의</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 히어로 섹션 -->
+    <section id="home" class="hero">
+        <div class="hero-content fade-in">
+            <h1>수학, 이제 쉽고 재미있게!</h1>
+            <p>개인 맞춤형 1:1 수업으로 수학 실력을 확실하게 향상시켜드립니다.<br>
+            20년 경력의 전문 강사진과 함께 수학의 즐거움을 발견하세요.</p>
+            <a href="#contact" class="cta-button">무료 상담 신청하기</a>
         </div>
-        
-        <div class="game-info">
-            <h2 style="text-align: center; margin-top: 0;">테트리스</h2>
-            
-            <div class="score-section">
-                <div class="score-item">점수: <span id="score">0</span></div>
-                <div class="score-item">레벨: <span id="level">1</span></div>
-                <div class="score-item">라인: <span id="lines">0</span></div>
+    </section>
+
+    <!-- 특징 섹션 -->
+    <section id="features" class="section features">
+        <h2 class="section-title scroll-reveal">왜 수학의 달인을 선택해야 할까요?</h2>
+        <div class="features-grid">
+            <div class="feature-card scroll-reveal">
+                <div class="feature-icon">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+                <h3>1:1 맞춤 수업</h3>
+                <p>학생 개개인의 수준과 학습 스타일에 맞춘 완전 개인화 수업으로 최대 학습 효과를 보장합니다.</p>
             </div>
-            
-            <div class="next-piece">
-                <div>다음 블록</div>
-                <canvas id="nextCanvas" width="80" height="80"></canvas>
+            <div class="feature-card scroll-reveal">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>체계적인 성적 관리</h3>
+                <p>정기적인 평가와 분석을 통해 학습 진도를 체크하고 약점을 보완하는 맞춤형 학습 계획을 제공합니다.</p>
             </div>
-            
-            <div class="controls">
-                <button id="startBtn" class="btn btn-start">게임 시작</button>
-                <button id="pauseBtn" class="btn btn-pause" disabled>일시정지</button>
-                <button id="resetBtn" class="btn btn-reset" disabled>다시시작</button>
-                <button id="soundBtn" class="btn btn-sound">🔊 사운드 ON</button>
+            <div class="feature-card scroll-reveal">
+                <div class="feature-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h3>유연한 시간표</h3>
+                <p>학생과 학부모의 스케줄에 맞춰 수업 시간을 조정할 수 있어 부담 없이 학습할 수 있습니다.</p>
             </div>
-            
-            <div class="sound-status">
-                <span id="soundStatus">효과음이 활성화되어 있습니다</span>
+            <div class="feature-card scroll-reveal">
+                <div class="feature-icon">
+                    <i class="fas fa-medal"></i>
+                </div>
+                <h3>검증된 교육 방법</h3>
+                <p>20년간 축적된 노하우와 최신 교육 트렌드를 결합한 효과적인 수학 학습법을 제공합니다.</p>
             </div>
-            
-            <div id="gameStatus" class="game-status">게임을 시작하세요!</div>
-            
-            <div class="instructions">
-                <strong>조작법:</strong><br>
-                ← → : 좌우 이동<br>
-                ↓ : 빠른 낙하<br>
-                ↑ : 회전<br>
-                스페이스 : 즉시 낙하
+            <div class="feature-card scroll-reveal">
+                <div class="feature-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3>온라인 학습 지원</h3>
+                <p>대면 수업과 온라인 수업을 병행하여 언제 어디서나 학습할 수 있는 환경을 제공합니다.</p>
+            </div>
+            <div class="feature-card scroll-reveal">
+                <div class="feature-icon">
+                    <i class="fas fa-comments"></i>
+                </div>
+                <h3>실시간 학부모 소통</h3>
+                <p>학습 진행 상황과 성과를 학부모님께 실시간으로 공유하여 투명한 교육 서비스를 제공합니다.</p>
             </div>
         </div>
-    </div>
+    </section>
+
+    <!-- 성과 섹션 -->
+    <section class="section achievements">
+        <h2 class="section-title scroll-reveal">놀라운 성과를 확인하세요</h2>
+        <div class="achievements-grid">
+            <div class="achievement-item scroll-reveal">
+                <h3>98%</h3>
+                <p>성적 향상률</p>
+            </div>
+            <div class="achievement-item scroll-reveal">
+                <h3>500+</h3>
+                <p>졸업생 수</p>
+            </div>
+            <div class="achievement-item scroll-reveal">
+                <h3>15년</h3>
+                <p>평균 경력</p>
+            </div>
+            <div class="achievement-item scroll-reveal">
+                <h3>4.9/5</h3>
+                <p>만족도 평점</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 강사진 섹션 -->
+    <section id="teachers" class="section">
+        <h2 class="section-title scroll-reveal">최고의 강사진을 만나보세요</h2>
+        <div class="teachers-grid">
+            <div class="teacher-card scroll-reveal">
+                <div class="teacher-image" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')"></div>
+                <div class="teacher-info">
+                    <h3>김수학 원장</h3>
+                    <p>서울대 수학교육과 졸업<br>20년 경력</p>
+                    <span class="teacher-speciality">고등수학 전문</span>
+                </div>
+            </div>
+            <div class="teacher-card scroll-reveal">
+                <div class="teacher-image" style="background-image: url('https://images.unsplash.com/photo-1494790108755-2616c9c9b8e3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')"></div>
+                <div class="teacher-info">
+                    <h3>이미래 선생님</h3>
+                    <p>연세대 수학과 졸업<br>15년 경력</p>
+                    <span class="teacher-speciality">중등수학 전문</span>
+                </div>
+            </div>
+            <div class="teacher-card scroll-reveal">
+                <div class="teacher-image" style="background-image: url('https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')"></div>
+                <div class="teacher-info">
+                    <h3>박천재 선생님</h3>
+                    <p>고려대 수학과 졸업<br>12년 경력</p>
+                    <span class="teacher-speciality">초등수학 전문</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 후기 섹션 -->
+    <section id="reviews" class="section reviews">
+        <h2 class="section-title scroll-reveal">학생과 학부모 후기</h2>
+        <div class="reviews-grid">
+            <div class="review-card scroll-reveal">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"수학을 포기하려던 아이가 이제는 수학이 제일 재미있다고 해요. 1:1 맞춤 수업의 효과가 정말 대단합니다!"</p>
+                <p class="review-author">- 중학교 2학년 김○○ 학부모</p>
+            </div>
+            <div class="review-card scroll-reveal">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"선생님이 제 수준에 맞춰서 차근차근 설명해주셔서 이해가 정말 잘 돼요. 성적도 2등급 올랐어요!"</p>
+                <p class="review-author">- 고등학교 1학년 이○○</p>
+            </div>
+            <div class="review-card scroll-reveal">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"온라인 수업도 대면 수업만큼 효과적이에요. 언제든지 질문할 수 있어서 좋습니다."</p>
+                <p class="review-author">- 중학교 3학년 박○○</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 연락처 섹션 -->
+    <section id="contact" class="section contact">
+        <h2 class="section-title scroll-reveal">지금 바로 상담받으세요!</h2>
+        <div class="contact-grid">
+            <div class="contact-info scroll-reveal">
+                <h3>📞 무료 상담 신청</h3>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>02-1234-5678</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>info@mathmaster.co.kr</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>서울시 강남구 테헤란로 123</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <span>평일 9:00-22:00, 주말 10:00-18:00</span>
+                </div>
+            </div>
+            <form class="contact-form scroll-reveal">
+                <div class="form-group">
+                    <label for="name">이름</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">연락처</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="grade">학년</label>
+                    <input type="text" id="grade" name="grade" placeholder="예: 중학교 2학년">
+                </div>
+                <div class="form-group">
+                    <label for="message">문의사항</label>
+                    <textarea id="message" name="message" placeholder="궁금한 점을 자유롭게 적어주세요"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">상담 신청하기</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer>
+        <p>&copy; 2025 수학의 달인. 모든 권리 보유.</p>
+    </footer>
 
     <script>
-        class Tetris {
-            constructor() {
-                this.canvas = document.getElementById('gameCanvas');
-                this.ctx = this.canvas.getContext('2d');
-                this.nextCanvas = document.getElementById('nextCanvas');
-                this.nextCtx = this.nextCanvas.getContext('2d');
-                
-                this.BLOCK_SIZE = 30;
-                this.BOARD_WIDTH = 10;
-                this.BOARD_HEIGHT = 20;
-                
-                this.board = [];
-                this.currentPiece = null;
-                this.nextPiece = null;
-                this.score = 0;
-                this.level = 1;
-                this.lines = 0;
-                this.gameRunning = false;
-                this.gamePaused = false;
-                this.dropTime = 0;
-                this.dropInterval = 1000;
-                this.soundEnabled = true;
-                
-                this.pieces = [
-                    { shape: [[1,1,1,1]], color: '#00FFFF' }, // I
-                    { shape: [[1,1],[1,1]], color: '#FFFF00' }, // O
-                    { shape: [[0,1,0],[1,1,1]], color: '#800080' }, // T
-                    { shape: [[0,1,1],[1,1,0]], color: '#00FF00' }, // S
-                    { shape: [[1,1,0],[0,1,1]], color: '#FF0000' }, // Z
-                    { shape: [[1,0,0],[1,1,1]], color: '#FF8000' }, // J
-                    { shape: [[0,0,1],[1,1,1]], color: '#0000FF' }  // L
-                ];
-                
-                // 오디오 컨텍스트 초기화
-                this.initAudio();
-                this.initBoard();
-                this.bindEvents();
-                this.updateDisplay();
-            }
-            
-            initAudio() {
-                try {
-                    this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                } catch (e) {
-                    console.log('오디오 컨텍스트를 생성할 수 없습니다:', e);
-                    this.soundEnabled = false;
+        // 스크롤 애니메이션
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
                 }
-            }
-            
-            // 효과음 생성 (Web Audio API 사용)
-            playLineClearSound() {
-                if (!this.soundEnabled || !this.audioContext) return;
-                
-                try {
-                    const oscillator = this.audioContext.createOscillator();
-                    const gainNode = this.audioContext.createGain();
-                    
-                    oscillator.connect(gainNode);
-                    gainNode.connect(this.audioContext.destination);
-                    
-                    // 라인 클리어 효과음 (상승하는 톤)
-                    oscillator.frequency.setValueAtTime(440, this.audioContext.currentTime);
-                    oscillator.frequency.exponentialRampToValueAtTime(880, this.audioContext.currentTime + 0.1);
-                    oscillator.frequency.exponentialRampToValueAtTime(1320, this.audioContext.currentTime + 0.2);
-                    
-                    gainNode.gain.setValueAtTime(0.3, this.audioContext.currentTime);
-                    gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + 0.3);
-                    
-                    oscillator.type = 'square';
-                    oscillator.start(this.audioContext.currentTime);
-                    oscillator.stop(this.audioContext.currentTime + 0.3);
-                } catch (e) {
-                    console.log('효과음 재생 실패:', e);
+            });
+        }, observerOptions);
+
+        // 모든 scroll-reveal 요소 관찰
+        document.querySelectorAll('.scroll-reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // 부드러운 스크롤
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
+            });
+        });
+
+        // 폼 제출 처리
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('상담 신청이 완료되었습니다! 빠른 시일 내에 연락드리겠습니다.');
+            this.reset();
+        });
+
+        // 헤더 스크롤 효과
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(102, 126, 234, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+                header.style.backdropFilter = 'none';
             }
-            
-            // 게임 오버 효과음
-            playGameOverSound() {
-                if (!this.soundEnabled || !this.audioContext) return;
-                
-                try {
-                    const oscillator = this.audioContext.createOscillator();
-                    const gainNode = this.audioContext.createGain();
-                    
-                    oscillator.connect(gainNode);
-                    gainNode.connect(this.audioContext.destination);
-                    
-                    // 게임 오버 효과음 (하강하는 톤)
-                    oscillator.frequency.setValueAtTime(440, this.audioContext.currentTime);
-                    oscillator.frequency.exponentialRampToValueAtTime(220, this.audioContext.currentTime + 0.5);
-                    oscillator.frequency.exponentialRampToValueAtTime(110, this.audioContext.currentTime + 1.0);
-                    
-                    gainNode.gain.setValueAtTime(0.3, this.audioContext.currentTime);
-                    gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + 1.0);
-                    
-                    oscillator.type = 'sawtooth';
-                    oscillator.start(this.audioContext.currentTime);
-                    oscillator.stop(this.audioContext.currentTime + 1.0);
-                } catch (e) {
-                    console.log('게임 오버 효과음 재생 실패:', e);
-                }
-            }
-            
-            initBoard() {
-                this.board = Array(this.BOARD_HEIGHT).fill().map(() => Array(this.BOARD_WIDTH).fill(0));
-            }
-            
-            bindEvents() {
-                document.getElementById('startBtn').addEventListener('click', () => this.startGame());
-                document.getElementById('pauseBtn').addEventListener('click', () => this.togglePause());
-                document.getElementById('resetBtn').addEventListener('click', () => this.resetGame());
-                document.getElementById('soundBtn').addEventListener('click', () => this.toggleSound());
-                
-                document.addEventListener('keydown', (e) => this.handleKeyPress(e));
-            }
-            
-            toggleSound() {
-                this.soundEnabled = !this.soundEnabled;
-                const soundBtn = document.getElementById('soundBtn');
-                const soundStatus = document.getElementById('soundStatus');
-                
-                if (this.soundEnabled) {
-                    soundBtn.textContent = '🔊 사운드 ON';
-                    soundStatus.textContent = '효과음이 활성화되어 있습니다';
-                    // 오디오 컨텍스트가 없으면 다시 초기화 시도
-                    if (!this.audioContext) {
-                        this.initAudio();
-                    }
-                } else {
-                    soundBtn.textContent = '🔇 사운드 OFF';
-                    soundStatus.textContent = '효과음이 비활성화되어 있습니다';
-                }
-            }
-            
-            startGame() {
-                // 오디오 컨텍스트 활성화 (사용자 상호작용 후)
-                if (this.audioContext && this.audioContext.state === 'suspended') {
-                    this.audioContext.resume();
-                }
-                
-                this.gameRunning = true;
-                this.gamePaused = false;
-                this.score = 0;
-                this.level = 1;
-                this.lines = 0;
-                this.dropInterval = 1000;
-                this.initBoard();
-                this.currentPiece = this.createPiece();
-                this.nextPiece = this.createPiece();
-                
-                document.getElementById('startBtn').disabled = true;
-                document.getElementById('pauseBtn').disabled = false;
-                document.getElementById('resetBtn').disabled = false;
-                document.getElementById('gameStatus').textContent = '게임 진행 중';
-                
-                this.updateDisplay();
-                this.gameLoop();
-            }
-            
-            togglePause() {
-                if (!this.gameRunning) return;
-                
-                this.gamePaused = !this.gamePaused;
-                const pauseBtn = document.getElementById('pauseBtn');
-                const statusDiv = document.getElementById('gameStatus');
-                
-                if (this.gamePaused) {
-                    pauseBtn.textContent = '계속하기';
-                    statusDiv.textContent = '일시정지';
-                } else {
-                    pauseBtn.textContent = '일시정지';
-                    statusDiv.textContent = '게임 진행 중';
-                    this.gameLoop();
-                }
-            }
-            
-            resetGame() {
-                this.gameRunning = false;
-                this.gamePaused = false;
-                this.score = 0;
-                this.level = 1;
-                this.lines = 0;
-                this.initBoard();
-                this.currentPiece = null;
-                this.nextPiece = null;
-                
-                document.getElementById('startBtn').disabled = false;
-                document.getElementById('pauseBtn').disabled = true;
-                document.getElementById('resetBtn').disabled = true;
-                document.getElementById('pauseBtn').textContent = '일시정지';
-                document.getElementById('gameStatus').textContent = '게임을 시작하세요!';
-                
-                this.updateDisplay();
-                this.draw();
-            }
-            
-            createPiece() {
-                const piece = this.pieces[Math.floor(Math.random() * this.pieces.length)];
-                return {
-                    shape: piece.shape.map(row => [...row]),
-                    color: piece.color,
-                    x: Math.floor(this.BOARD_WIDTH / 2) - Math.floor(piece.shape[0].length / 2),
-                    y: 0
-                };
-            }
-            
-            handleKeyPress(e) {
-                if (!this.gameRunning || this.gamePaused) return;
-                
-                switch(e.code) {
-                    case 'ArrowLeft':
-                        this.movePiece(-1, 0);
-                        break;
-                    case 'ArrowRight':
-                        this.movePiece(1, 0);
-                        break;
-                    case 'ArrowDown':
-                        this.movePiece(0, 1);
-                        break;
-                    case 'ArrowUp':
-                        this.rotatePiece();
-                        break;
-                    case 'Space':
-                        e.preventDefault();
-                        this.hardDrop();
-                        break;
-                }
-            }
-            
-            movePiece(dx, dy) {
-                if (!this.currentPiece) return;
-                
-                const newX = this.currentPiece.x + dx;
-                const newY = this.currentPiece.y + dy;
-                
-                if (this.isValidMove(this.currentPiece.shape, newX, newY)) {
-                    this.currentPiece.x = newX;
-                    this.currentPiece.y = newY;
-                    this.draw();
-                }
-            }
-            
-            rotatePiece() {
-                if (!this.currentPiece) return;
-                
-                const rotated = this.rotateMatrix(this.currentPiece.shape);
-                if (this.isValidMove(rotated, this.currentPiece.x, this.currentPiece.y)) {
-                    this.currentPiece.shape = rotated;
-                    this.draw();
-                }
-            }
-            
-            hardDrop() {
-                if (!this.currentPiece) return;
-                
-                while (this.isValidMove(this.currentPiece.shape, this.currentPiece.x, this.currentPiece.y + 1)) {
-                    this.currentPiece.y++;
-                }
-                this.placePiece();
-            }
-            
-            rotateMatrix(matrix) {
-                const rows = matrix.length;
-                const cols = matrix[0].length;
-                const rotated = Array(cols).fill().map(() => Array(rows).fill(0));
-                
-                for (let i = 0; i < rows; i++) {
-                    for (let j = 0; j < cols; j++) {
-                        rotated[j][rows - 1 - i] = matrix[i][j];
-                    }
-                }
-                return rotated;
-            }
-            
-            isValidMove(shape, x, y) {
-                for (let i = 0; i < shape.length; i++) {
-                    for (let j = 0; j < shape[i].length; j++) {
-                        if (shape[i][j]) {
-                            const newX = x + j;
-                            const newY = y + i;
-                            
-                            if (newX < 0 || newX >= this.BOARD_WIDTH || 
-                                newY >= this.BOARD_HEIGHT || 
-                                (newY >= 0 && this.board[newY][newX])) {
-                                return false;
-                            }
-                        }
-                    }
-                }
-                return true;
-            }
-            
-            placePiece() {
-                if (!this.currentPiece) return;
-                
-                for (let i = 0; i < this.currentPiece.shape.length; i++) {
-                    for (let j = 0; j < this.currentPiece.shape[i].length; j++) {
-                        if (this.currentPiece.shape[i][j]) {
-                            const x = this.currentPiece.x + j;
-                            const y = this.currentPiece.y + i;
-                            if (y >= 0) {
-                                this.board[y][x] = this.currentPiece.color;
-                            }
-                        }
-                    }
-                }
-                
-                this.clearLines();
-                this.currentPiece = this.nextPiece;
-                this.nextPiece = this.createPiece();
-                
-                if (!this.isValidMove(this.currentPiece.shape, this.currentPiece.x, this.currentPiece.y)) {
-                    this.gameOver();
-                }
-                
-                this.updateDisplay();
-            }
-            
-            clearLines() {
-                let linesCleared = 0;
-                
-                for (let i = this.BOARD_HEIGHT - 1; i >= 0; i--) {
-                    if (this.board[i].every(cell => cell !== 0)) {
-                        this.board.splice(i, 1);
-                        this.board.unshift(Array(this.BOARD_WIDTH).fill(0));
-                        linesCleared++;
-                        i++; // 같은 줄 다시 체크
-                    }
-                }
-                
-                if (linesCleared > 0) {
-                    // 라인 클리어 효과음 재생
-                    this.playLineClearSound();
-                    
-                    this.lines += linesCleared;
-                    this.score += linesCleared * 100 * this.level;
-                    this.level = Math.floor(this.lines / 10) + 1;
-                    this.dropInterval = Math.max(100, 1000 - (this.level - 1) * 100);
-                }
-            }
-            
-            gameOver() {
-                this.gameRunning = false;
-                this.playGameOverSound(); // 게임 오버 효과음 재생
-                
-                document.getElementById('startBtn').disabled = false;
-                document.getElementById('pauseBtn').disabled = true;
-                document.getElementById('gameStatus').textContent = '게임 오버!';
-                
-                setTimeout(() => {
-                    alert(`게임 오버!\n점수: ${this.score}\n레벨: ${this.level}\n라인: ${this.lines}`);
-                }, 500); // 효과음이 재생될 시간을 주기 위해 약간 지연
-            }
-            
-            gameLoop() {
-                if (!this.gameRunning || this.gamePaused) return;
-                
-                const now = Date.now();
-                if (now - this.dropTime > this.dropInterval) {
-                    if (this.currentPiece && this.isValidMove(this.currentPiece.shape, this.currentPiece.x, this.currentPiece.y + 1)) {
-                        this.currentPiece.y++;
-                    } else if (this.currentPiece) {
-                        this.placePiece();
-                    }
-                    this.dropTime = now;
-                }
-                
-                this.draw();
-                requestAnimationFrame(() => this.gameLoop());
-            }
-            
-            draw() {
-                // 게임 보드 클리어
-                this.ctx.fillStyle = '#000';
-                this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
-                
-                // 보드에 있는 블록들 그리기
-                for (let i = 0; i < this.BOARD_HEIGHT; i++) {
-                    for (let j = 0; j < this.BOARD_WIDTH; j++) {
-                        if (this.board[i][j]) {
-                            this.drawBlock(j, i, this.board[i][j]);
-                        }
-                    }
-                }
-                
-                // 현재 블록 그리기
-                if (this.currentPiece) {
-                    for (let i = 0; i < this.currentPiece.shape.length; i++) {
-                        for (let j = 0; j < this.currentPiece.shape[i].length; j++) {
-                            if (this.currentPiece.shape[i][j]) {
-                                this.drawBlock(
-                                    this.currentPiece.x + j,
-                                    this.currentPiece.y + i,
-                                    this.currentPiece.color
-                                );
-                            }
-                        }
-                    }
-                }
-                
-                // 다음 블록 그리기
-                this.drawNextPiece();
-            }
-            
-            drawBlock(x, y, color) {
-                this.ctx.fillStyle = color;
-                this.ctx.fillRect(x * this.BLOCK_SIZE, y * this.BLOCK_SIZE, this.BLOCK_SIZE, this.BLOCK_SIZE);
-                this.ctx.strokeStyle = '#333';
-                this.ctx.strokeRect(x * this.BLOCK_SIZE, y * this.BLOCK_SIZE, this.BLOCK_SIZE, this.BLOCK_SIZE);
-            }
-            
-            drawNextPiece() {
-                this.nextCtx.fillStyle = '#000';
-                this.nextCtx.fillRect(0, 0, this.nextCanvas.width, this.nextCanvas.height);
-                
-                if (this.nextPiece) {
-                    const blockSize = 15;
-                    const offsetX = (this.nextCanvas.width - this.nextPiece.shape[0].length * blockSize) / 2;
-                    const offsetY = (this.nextCanvas.height - this.nextPiece.shape.length * blockSize) / 2;
-                    
-                    for (let i = 0; i < this.nextPiece.shape.length; i++) {
-                        for (let j = 0; j < this.nextPiece.shape[i].length; j++) {
-                            if (this.nextPiece.shape[i][j]) {
-                                this.nextCtx.fillStyle = this.nextPiece.color;
-                                this.nextCtx.fillRect(
-                                    offsetX + j * blockSize,
-                                    offsetY + i * blockSize,
-                                    blockSize,
-                                    blockSize
-                                );
-                                this.nextCtx.strokeStyle = '#333';
-                                this.nextCtx.strokeRect(
-                                    offsetX + j * blockSize,
-                                    offsetY + i * blockSize,
-                                    blockSize,
-                                    blockSize
-                                );
-                            }
-                        }
-                    }
-                }
-            }
-            
-            updateDisplay() {
-                document.getElementById('score').textContent = this.score;
-                document.getElementById('level').textContent = this.level;
-                document.getElementById('lines').textContent = this.lines;
-            }
-        }
-        
-        // 게임 시작
-        const game = new Tetris();
+        });
     </script>
 </body>
 </html>
