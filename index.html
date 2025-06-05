@@ -19,7 +19,7 @@
             color: #333;
         }
 
-        /* 헤더 */
+        /* Header */
         header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -61,7 +61,7 @@
             color: #ffd700;
         }
 
-        /* 히어로 섹션 */
+        /* Hero Section */
         .hero {
             background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1509228468518-180dd4864904?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
             background-size: cover;
@@ -104,7 +104,7 @@
             box-shadow: 0 8px 25px rgba(255, 107, 107, 0.6);
         }
 
-        /* 섹션 공통 스타일 */
+        /* Section Common Styles */
         .section {
             padding: 80px 0;
             max-width: 1200px;
@@ -125,7 +125,7 @@
             text-align: center;
             font-size: 2.5rem;
             margin-bottom: 3rem;
-            color: white; /* 변경된 부분 */
+            color: white;
             position: relative;
         }
         .section-title::after {
@@ -138,7 +138,7 @@
             border-radius: 2px;
         }
 
-        /* 특징 섹션 */
+        /* Features Section */
         .features {
             background: #f8f9fa;
         }
@@ -176,7 +176,7 @@
             color: #2c3e50;
         }
 
-        /* 성과 섹션 */
+        /* Achievements Section */
         .achievements {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -200,7 +200,7 @@
             opacity: 0.9;
         }
 
-        /* 강사진 섹션 */
+        /* Teachers Section */
         .teachers-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -252,7 +252,7 @@
             display: inline-block;
         }
 
-        /* 후기 섹션 */
+        /* Reviews Section */
         .reviews {
             background: #f8f9fa;
         }
@@ -289,7 +289,106 @@
             color: #2c3e50;
         }
 
-        /* 연락처 섹션 */
+        /* AI Features Section */
+        .ai-features {
+            background: #eef1f5; /* Light gray background */
+            padding: 80px 0;
+        }
+
+        .ai-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            margin-bottom: 2rem;
+        }
+
+        .ai-card h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #667eea;
+            text-align: center;
+        }
+
+        .ai-input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .ai-input-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #555;
+        }
+
+        .ai-input-group input,
+        .ai-input-group textarea,
+        .ai-input-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .ai-input-group input:focus,
+        .ai-input-group textarea:focus,
+        .ai-input-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .ai-button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .ai-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+        }
+
+        .ai-response-area {
+            background: #f0f4f7;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 1.5rem;
+            border: 1px dashed #a0a6b7;
+            min-height: 100px;
+            white-space: pre-wrap; /* Preserve whitespace and line breaks */
+            word-wrap: break-word; /* Break long words */
+            color: #444;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .loading-indicator {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-style: italic;
+            color: #888;
+        }
+        
+        .error-message {
+            color: #e74c3c;
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+
+        /* Contact Section */
         .contact {
             background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
             color: white;
@@ -366,7 +465,7 @@
             transform: translateY(-2px);
         }
 
-        /* 푸터 */
+        /* Footer */
         footer {
             background: #2c3e50;
             color: white;
@@ -374,7 +473,7 @@
             padding: 2rem 0;
         }
 
-        /* 반응형 */
+        /* Responsive */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -399,7 +498,7 @@
             }
         }
 
-        /* 애니메이션 */
+        /* Animations */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -415,7 +514,7 @@
             animation: fadeInUp 0.8s ease-out;
         }
 
-        /* 스크롤 효과 */
+        /* Scroll Reveal */
         .scroll-reveal {
             opacity: 0;
             transform: translateY(50px);
@@ -429,7 +528,7 @@
     </style>
 </head>
 <body>
-    <!-- 헤더 -->
+    <!-- Header -->
     <header>
         <nav>
             <div class="logo">🧮 수학의 달인</div>
@@ -438,12 +537,13 @@
                 <li><a href="#features">특징</a></li>
                 <li><a href="#teachers">강사진</a></li>
                 <li><a href="#reviews">후기</a></li>
+                <li><a href="#ai-features">AI 학습 도우미</a></li>
                 <li><a href="#contact">문의</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- 히어로 섹션 -->
+    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content fade-in">
             <h1>수학, 이제 쉽고 재미있게!</h1>
@@ -453,7 +553,7 @@
         </div>
     </section>
 
-    <!-- 특징 섹션 -->
+    <!-- Features Section -->
     <section id="features" class="section features">
         <h2 class="section-title scroll-reveal">왜 수학의 달인을 선택해야 할까요?</h2>
         <div class="features-grid">
@@ -502,7 +602,7 @@
         </div>
     </section>
 
-    <!-- 성과 섹션 -->
+    <!-- Achievements Section -->
     <section class="section achievements">
         <h2 class="section-title scroll-reveal">놀라운 성과를 확인하세요</h2>
         <div class="achievements-grid">
@@ -525,43 +625,38 @@
         </div>
     </section>
 
-<!-- 강사진 섹션 -->
-<section id="teachers" class="section">
-    <h2 class="section-title scroll-reveal">최고의 강사진을 만나보세요</h2>
-    <div class="teachers-grid">
-        <div class="teacher-card scroll-reveal">
-            <!-- 김수학 원장: 젊은 한국인/동양인 남성 이미지 -->
-            <div class="teacher-image" style="background-image: url('https://img.stablecog.com/insecure/256w/aHR0cHM6Ly9iLnN0YWJsZWNvZy5jb20vMzgyNjFlYTAtYzdiYy00NGE3LWEyZWQtOTA0NWMxNjBhYTEzLmpwZWc.webp?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')"></div>
-            <div class="teacher-info">
-                <h3>김수학 원장</h3>
-                <p>서울대 수학교육과 졸업<br>20년 경력</p>
-                <span class="teacher-speciality">고등수학 전문</span>
+    <!-- Teachers Section -->
+    <section id="teachers" class="section">
+        <h2 class="section-title scroll-reveal">최고의 강사진을 만나보세요</h2>
+        <div class="teachers-grid">
+            <div class="teacher-card scroll-reveal">
+                <div class="teacher-image" style="background-image: url('https://img.stablecog.com/insecure/256w/aHR0cHM6Ly9iLnN0YWJsZWNvZy5jb20vMzgyNjFlYTAtYzdiYy00NGE3LWEyZWQtOTA0NWMxNjBhYTEzLmpwZWc.webp?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')"></div>
+                <div class="teacher-info">
+                    <h3>김수학 원장</h3>
+                    <p>서울대 수학교육과 졸업<br>20년 경력</p>
+                    <span class="teacher-speciality">고등수학 전문</span>
+                </div>
+            </div>
+            <div class="teacher-card scroll-reveal">
+                <div class="teacher-image" style="background-image: url('https://ai-previews.123rf.com/ai-txt2img/600nwm/5b6af20a-09db-4cdd-af62-0ee9b74106cd.jpg?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')"></div>
+                <div class="teacher-info">
+                    <h3>이미래 선생님</h3>
+                    <p>연세대 수학과 졸업<br>15년 경력</p>
+                    <span class="teacher-speciality">중등수학 전문</span>
+                </div>
+            </div>
+            <div class="teacher-card scroll-reveal">
+                <div class="teacher-image" style="background-image: url('https://img.stablecog.com/insecure/256w/aHR0cHM6Ly9iLnN0YWJsZWNvZy5jb20vNzU3NWMyOGEtMTdjYi00YjYzLTg4NzMtNDAxOWQwOWM3MjM4LmpwZWc.webp?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')"></div>
+                <div class="teacher-info">
+                    <h3>박천재 선생님</h3>
+                    <p>고려대 수학과 졸업<br>12년 경력</p>
+                    <span class="teacher-speciality">초등수학 전문</span>
+                </div>
             </div>
         </div>
-        <div class="teacher-card scroll-reveal">
-            <!-- 이미래 선생님: 정장 입은 한국인/동양인 여성 이미지 -->
-            <div class="teacher-image" style="background-image: url('https://ai-previews.123rf.com/ai-txt2img/600nwm/5b6af20a-09db-4cdd-af62-0ee9b74106cd.jpg?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')"></div>
-            <div class="teacher-info">
-                <h3>이미래 선생님</h3>
-                <p>연세대 수학과 졸업<br>15년 경력</p>
-                <span class="teacher-speciality">중등수학 전문</span>
-            </div>
-        </div>
-        <div class="teacher-card scroll-reveal">
-            <!-- 박천재 선생님: 나이 있는 한국인/동양인 남성 이미지 -->
-            <div class="teacher-image" style="background-image: url('https://img.stablecog.com/insecure/256w/aHR0cHM6Ly9iLnN0YWJsZWNvZy5jb20vNzU3NWMyOGEtMTdjYi00YjYzLTg4NzMtNDAxOWQwOWM3MjM4LmpwZWc.webp?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')"></div>
-            <div class="teacher-info">
-                <h3>박천재 선생님</h3>
-                <p>고려대 수학과 졸업<br>12년 경력</p>
-                <span class="teacher-speciality">초등수학 전문</span>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
-
-
-    <!-- 후기 섹션 -->
+    <!-- Reviews Section -->
     <section id="reviews" class="section reviews">
         <h2 class="section-title scroll-reveal">학생과 학부모 후기</h2>
         <div class="reviews-grid">
@@ -583,7 +678,62 @@
         </div>
     </section>
 
-    <!-- 연락처 섹션 -->
+    <!-- AI Features Section (New) -->
+    <section id="ai-features" class="section ai-features">
+        <h2 class="section-title scroll-reveal">✨ AI 학습 도우미</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Math Problem Explainer -->
+            <div class="ai-card scroll-reveal">
+                <h3>✨ 수학 문제 해설 도우미</h3>
+                <p class="text-sm text-gray-600 mb-4">풀리지 않는 수학 문제를 입력하면, AI가 단계별로 친절하게 해설해 드립니다.</p>
+                <div class="ai-input-group">
+                    <label for="mathProblemInput">수학 문제 입력:</label>
+                    <textarea id="mathProblemInput" rows="5" placeholder="예: 이차방정식 $x^2 - 5x + 6 = 0$ 의 근을 구하시오."></textarea>
+                </div>
+                <button id="solveProblemButton" class="ai-button">✨ 해설 요청하기</button>
+                <div id="problemExplanation" class="ai-response-area">해설이 여기에 표시됩니다.</div>
+                <div id="problemLoading" class="loading-indicator hidden">해설 생성 중...</div>
+                <div id="problemError" class="error-message hidden">오류가 발생했습니다. 다시 시도해 주세요.</div>
+            </div>
+
+            <!-- Personalized Study Plan Suggester -->
+            <div class="ai-card scroll-reveal">
+                <h3>✨ 맞춤 학습 계획 제안</h3>
+                <p class="text-sm text-gray-600 mb-4">현재 학년, 단원, 어려움 정도를 입력하면 AI가 맞춤 학습 계획을 제안해 드립니다.</p>
+                <div class="ai-input-group">
+                    <label for="gradeSelect">학년:</label>
+                    <select id="gradeSelect">
+                        <option value="초등학교">초등학교</option>
+                        <option value="중학교 1학년">중학교 1학년</option>
+                        <option value="중학교 2학년">중학교 2학년</option>
+                        <option value="중학교 3학년">중학교 3학년</option>
+                        <option value="고등학교 1학년">고등학교 1학년</option>
+                        <option value="고등학교 2학년">고등학교 2학년</option>
+                        <option value="고등학교 3학년">고등학교 3학년</option>
+                    </select>
+                </div>
+                <div class="ai-input-group">
+                    <label for="mathTopicInput">수학 단원 (예: 미적분, 확률과 통계):</label>
+                    <input type="text" id="mathTopicInput" placeholder="예: 다항식, 도형의 성질">
+                </div>
+                <div class="ai-input-group">
+                    <label for="difficultySelect">어려움 정도:</label>
+                    <select id="difficultySelect">
+                        <option value="쉬움">쉬움</option>
+                        <option value="보통">보통</option>
+                        <option value="어려움">어려움</option>
+                        <option value="매우 어려움">매우 어려움</option>
+                    </select>
+                </div>
+                <button id="generatePlanButton" class="ai-button">✨ 계획 제안받기</button>
+                <div id="studyPlanOutput" class="ai-response-area">학습 계획이 여기에 표시됩니다.</div>
+                <div id="planLoading" class="loading-indicator hidden">계획 생성 중...</div>
+                <div id="planError" class="error-message hidden">오류가 발생했습니다. 다시 시도해 주세요.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
     <section id="contact" class="section contact">
         <h2 class="section-title2 scroll-reveal">지금 바로 상담받으세요!</h2>
         <div class="contact-grid">
@@ -616,25 +766,25 @@
                     <input type="tel" id="phone" name="phone" required>
                 </div>
                 <div class="form-group">
-                    <label for="grade">학년</label>
-                    <input type="text" id="grade" name="grade" placeholder="예: 중학교 2학년">
+                    <label for="grade_contact">학년</label>
+                    <input type="text" id="grade_contact" name="grade" placeholder="예: 중학교 2학년">
                 </div>
                 <div class="form-group">
-                    <label for="message">문의사항</label>
-                    <textarea id="message" name="message" placeholder="궁금한 점을 자유롭게 적어주세요"></textarea>
+                    <label for="message_contact">문의사항</label>
+                    <textarea id="message_contact" name="message" placeholder="궁금한 점을 자유롭게 적어주세요"></textarea>
                 </div>
                 <button type="submit" class="submit-btn">상담 신청하기</button>
             </form>
         </div>
     </section>
 
-    <!-- 푸터 -->
+    <!-- Footer -->
     <footer>
         <p>&copy; 2025 수학의 달인. 모든 권리 보유.</p>
     </footer>
 
     <script>
-        // 스크롤 애니메이션
+        // Scroll Animation
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -648,12 +798,12 @@
             });
         }, observerOptions);
 
-        // 모든 scroll-reveal 요소 관찰
+        // Observe all scroll-reveal elements
         document.querySelectorAll('.scroll-reveal').forEach(el => {
             observer.observe(el);
         });
 
-        // 부드러운 스크롤
+        // Smooth Scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -667,14 +817,15 @@
             });
         });
 
-        // 폼 제출 처리
+        // Contact Form Submission Handling
         document.querySelector('.contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
+            // In a real application, you'd send this data to a server
             alert('상담 신청이 완료되었습니다! 빠른 시일 내에 연락드리겠습니다.');
             this.reset();
         });
 
-        // 헤더 스크롤 효과
+        // Header Scroll Effect
         window.addEventListener('scroll', function() {
             const header = document.querySelector('header');
             if (window.scrollY > 100) {
@@ -683,6 +834,193 @@
             } else {
                 header.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
                 header.style.backdropFilter = 'none';
+            }
+        });
+
+        // Gemini API Integration - Math Problem Explainer
+        const mathProblemInput = document.getElementById('mathProblemInput');
+        const solveProblemButton = document.getElementById('solveProblemButton');
+        const problemExplanation = document.getElementById('problemExplanation');
+        const problemLoading = document.getElementById('problemLoading');
+        const problemError = document.getElementById('problemError');
+
+        solveProblemButton.addEventListener('click', async () => {
+            const problem = mathProblemInput.value.trim();
+
+            // Reset UI state at the beginning
+            problemExplanation.textContent = ''; 
+            problemExplanation.style.color = '#444'; // Reset text color
+            problemExplanation.classList.add('hidden'); // Initially hide explanation area
+            problemLoading.classList.add('hidden'); // Ensure loading is hidden
+            problemError.classList.add('hidden'); // Ensure error is hidden
+            solveProblemButton.disabled = true; // Disable button immediately
+
+            if (!problem) {
+                problemExplanation.textContent = '수학 문제를 입력해주세요.';
+                problemExplanation.style.color = '#e74c3c'; // Set error color
+                problemExplanation.classList.remove('hidden'); // Show error message in explanation area
+                solveProblemButton.disabled = false; // Re-enable button
+                return;
+            }
+
+            problemLoading.classList.remove('hidden'); // Show loading indicator
+            
+            try {
+                let chatHistory = [];
+                chatHistory.push({ role: "user", parts: [{ text: `다음 수학 문제를 단계별로 자세히 설명해 주세요: ${problem}` }] });
+                const payload = { contents: chatHistory };
+                const apiKey = "";
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    const text = result.candidates[0].content.parts[0].text;
+                    problemExplanation.textContent = text;
+                    problemExplanation.style.color = '#444'; // Set to default success color
+                    problemExplanation.classList.remove('hidden'); // Show explanation
+                    problemError.classList.add('hidden'); // Ensure error is hidden
+                } else {
+                    problemError.textContent = '해설을 생성하는 데 실패했습니다. 잠시 후 다시 시도해 주세요.';
+                    problemError.classList.remove('hidden'); // Show specific error message
+                    problemExplanation.classList.add('hidden'); // Hide explanation on error
+                }
+            } catch (error) {
+                console.error('Error fetching math problem explanation:', error);
+                problemError.textContent = '네트워크 오류가 발생했습니다. 인터넷 연결을 확인해 주세요.';
+                problemError.classList.remove('hidden'); // Show network error message
+                problemExplanation.classList.add('hidden'); // Hide explanation on error
+            } finally {
+                problemLoading.classList.add('hidden'); // Always hide loading indicator
+                solveProblemButton.disabled = false; // Always re-enable button
+            }
+        });
+
+        // Gemini API Integration - Personalized Study Plan Suggester
+        const gradeSelect = document.getElementById('gradeSelect');
+        const mathTopicInput = document.getElementById('mathTopicInput');
+        const difficultySelect = document.getElementById('difficultySelect');
+        const generatePlanButton = document.getElementById('generatePlanButton');
+        const studyPlanOutput = document.getElementById('studyPlanOutput');
+        const planLoading = document.getElementById('planLoading');
+        const planError = document.getElementById('planError');
+
+        generatePlanButton.addEventListener('click', async () => {
+            const grade = gradeSelect.value;
+            const topic = mathTopicInput.value.trim();
+            const difficulty = difficultySelect.value;
+
+            // Reset UI state at the beginning
+            studyPlanOutput.textContent = '';
+            studyPlanOutput.style.color = '#444'; // Reset text color
+            studyPlanOutput.classList.add('hidden'); // Initially hide output area
+            planLoading.classList.add('hidden'); // Ensure loading is hidden
+            planError.classList.add('hidden'); // Ensure error is hidden
+            generatePlanButton.disabled = true; // Disable button immediately
+
+            if (!topic) {
+                studyPlanOutput.textContent = '학습할 수학 단원을 입력해주세요.';
+                studyPlanOutput.style.color = '#e74c3c'; // Set error color
+                studyPlanOutput.classList.remove('hidden'); // Show error message in output area
+                generatePlanButton.disabled = false; // Re-enable button
+                return;
+            }
+
+            planLoading.classList.remove('hidden'); // Show loading indicator
+            
+            try {
+                let chatHistory = [];
+                const prompt = `저는 ${grade} 학생이고, 수학 ${topic}이 ${difficulty} 수준입니다. ${topic} 학습을 위한 맞춤형 학습 계획 (주요 학습 주제, 예상 마일스톤, 효과적인 학습 팁)을 JSON 형식으로 제안해주세요.`;
+                chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+
+                const payload = {
+                    contents: chatHistory,
+                    generationConfig: {
+                        responseMimeType: "application/json",
+                        responseSchema: {
+                            type: "OBJECT",
+                            properties: {
+                                "mainTopics": { "type": "ARRAY", "items": { "type": "STRING" } },
+                                "milestones": { "type": "ARRAY", "items": { "type": "STRING" } },
+                                "studyTips": { "type": "ARRAY", "items": { "type": "STRING" } }
+                            },
+                            "propertyOrdering": ["mainTopics", "milestones", "studyTips"]
+                        }
+                    }
+                };
+                const apiKey = "";
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    const jsonString = result.candidates[0].content.parts[0].text;
+                    const parsedJson = JSON.parse(jsonString);
+
+                    let outputHtml = '<strong>✨ 맞춤 학습 계획:</strong><br><br>';
+                    outputHtml += '<strong>주요 학습 주제:</strong><ul>';
+                    if (parsedJson.mainTopics && parsedJson.mainTopics.length > 0) {
+                        parsedJson.mainTopics.forEach(topic => {
+                            outputHtml += `<li>${topic}</li>`;
+                        });
+                    } else {
+                        outputHtml += '<li>제안된 주요 학습 주제가 없습니다.</li>';
+                    }
+                    outputHtml += '</ul><br>';
+
+                    outputHtml += '<strong>예상 마일스톤:</strong><ul>';
+                    if (parsedJson.milestones && parsedJson.milestones.length > 0) {
+                        parsedJson.milestones.forEach(milestone => {
+                            outputHtml += `<li>${milestone}</li>`;
+                        });
+                    } else {
+                        outputHtml += '<li>제안된 예상 마일스톤이 없습니다.</li>';
+                    }
+                    outputHtml += '</ul><br>';
+
+                    outputHtml += '<strong>효과적인 학습 팁:</strong><ul>';
+                    if (parsedJson.studyTips && parsedJson.studyTips.length > 0) {
+                        parsedJson.studyTips.forEach(tip => {
+                            outputHtml += `<li>${tip}</li>`;
+                        });
+                    } else {
+                        outputHtml += '<li>제안된 효과적인 학습 팁이 없습니다.</li>';
+                    }
+                    outputHtml += '</ul>';
+
+                    studyPlanOutput.innerHTML = outputHtml;
+                    studyPlanOutput.style.color = '#444'; // Set to default success color
+                    studyPlanOutput.classList.remove('hidden'); // Show output
+                    planError.classList.add('hidden'); // Ensure error is hidden
+                } else {
+                    planError.textContent = '학습 계획을 생성하는 데 실패했습니다. 잠시 후 다시 시도해 주세요.';
+                    planError.classList.remove('hidden'); // Show specific error message
+                    studyPlanOutput.classList.add('hidden'); // Hide output on error
+                }
+            } catch (error) {
+                console.error('Error fetching study plan:', error);
+                planError.textContent = '네트워크 오류가 발생했습니다. 인터넷 연결을 확인해 주세요.';
+                planError.classList.remove('hidden'); // Show network error message
+                studyPlanOutput.classList.add('hidden'); // Hide output on error
+            } finally {
+                planLoading.classList.add('hidden'); // Always hide loading indicator
+                generatePlanButton.disabled = false; // Always re-enable button
             }
         });
     </script>
