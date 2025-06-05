@@ -691,9 +691,11 @@
                     <textarea id="mathProblemInput" rows="5" placeholder="예: 이차방정식 $x^2 - 5x + 6 = 0$ 의 근을 구하시오."></textarea>
                 </div>
                 <button id="solveProblemButton" class="ai-button">✨ 해설 요청하기</button>
-                <div id="problemExplanation" class="ai-response-area">해설이 여기에 표시됩니다.</div>
-                <div id="problemLoading" class="loading-indicator hidden">해설 생성 중...</div>
-                <div id="problemError" class="error-message hidden">오류가 발생했습니다. 다시 시도해 주세요.</div>
+                <!-- START: Explicitly hidden on load -->
+                <div id="problemExplanation" class="ai-response-area" style="display: none;"></div> 
+                <div id="problemLoading" class="loading-indicator" style="display: none;">해설 생성 중...</div> 
+                <div id="problemError" class="error-message" style="display: none;">오류가 발생했습니다. 다시 시도해 주세요.</div> 
+                <!-- END: Explicitly hidden on load -->
             </div>
 
             <!-- Personalized Study Plan Suggester -->
@@ -726,9 +728,11 @@
                     </select>
                 </div>
                 <button id="generatePlanButton" class="ai-button">✨ 계획 제안받기</button>
-                <div id="studyPlanOutput" class="ai-response-area">학습 계획이 여기에 표시됩니다.</div>
-                <div id="planLoading" class="loading-indicator hidden">계획 생성 중...</div>
-                <div id="planError" class="error-message hidden">오류가 발생했습니다. 다시 시도해 주세요.</div>
+                <!-- START: Explicitly hidden on load -->
+                <div id="studyPlanOutput" class="ai-response-area" style="display: none;"></div> 
+                <div id="planLoading" class="loading-indicator" style="display: none;">계획 생성 중...</div> 
+                <div id="planError" class="error-message" style="display: none;">오류가 발생했습니다. 다시 시도해 주세요.</div> 
+                <!-- END: Explicitly hidden on load -->
             </div>
         </div>
     </section>
@@ -849,21 +853,20 @@
 
             // Reset UI state at the beginning
             problemExplanation.textContent = ''; 
-            problemExplanation.style.color = '#444'; // Reset text color
-            problemExplanation.classList.add('hidden'); // Initially hide explanation area
-            problemLoading.classList.add('hidden'); // Ensure loading is hidden
-            problemError.classList.add('hidden'); // Ensure error is hidden
+            problemExplanation.style.display = 'none'; // Ensure hidden initially
+            problemLoading.style.display = 'none'; // Ensure hidden initially
+            problemError.style.display = 'none'; // Ensure hidden initially
             solveProblemButton.disabled = true; // Disable button immediately
 
             if (!problem) {
                 problemExplanation.textContent = '수학 문제를 입력해주세요.';
                 problemExplanation.style.color = '#e74c3c'; // Set error color
-                problemExplanation.classList.remove('hidden'); // Show error message in explanation area
+                problemExplanation.style.display = 'block'; // Show error message in explanation area
                 solveProblemButton.disabled = false; // Re-enable button
                 return;
             }
 
-            problemLoading.classList.remove('hidden'); // Show loading indicator
+            problemLoading.style.display = 'block'; // Show loading indicator
             
             try {
                 let chatHistory = [];
@@ -884,22 +887,19 @@
                     result.candidates[0].content && result.candidates[0].content.parts &&
                     result.candidates[0].content.parts.length > 0) {
                     const text = result.candidates[0].content.parts[0].text;
-                    problemExplanation.textContent = text;
+                    problemExplanation.innerHTML = text; // Use innerHTML for formatted text
                     problemExplanation.style.color = '#444'; // Set to default success color
-                    problemExplanation.classList.remove('hidden'); // Show explanation
-                    problemError.classList.add('hidden'); // Ensure error is hidden
+                    problemExplanation.style.display = 'block'; // Show explanation
                 } else {
                     problemError.textContent = '해설을 생성하는 데 실패했습니다. 잠시 후 다시 시도해 주세요.';
-                    problemError.classList.remove('hidden'); // Show specific error message
-                    problemExplanation.classList.add('hidden'); // Hide explanation on error
+                    problemError.style.display = 'block'; // Show specific error message
                 }
             } catch (error) {
                 console.error('Error fetching math problem explanation:', error);
                 problemError.textContent = '네트워크 오류가 발생했습니다. 인터넷 연결을 확인해 주세요.';
-                problemError.classList.remove('hidden'); // Show network error message
-                problemExplanation.classList.add('hidden'); // Hide explanation on error
+                problemError.style.display = 'block'; // Show network error message
             } finally {
-                problemLoading.classList.add('hidden'); // Always hide loading indicator
+                problemLoading.style.display = 'none'; // Always hide loading indicator
                 solveProblemButton.disabled = false; // Always re-enable button
             }
         });
@@ -920,21 +920,20 @@
 
             // Reset UI state at the beginning
             studyPlanOutput.textContent = '';
-            studyPlanOutput.style.color = '#444'; // Reset text color
-            studyPlanOutput.classList.add('hidden'); // Initially hide output area
-            planLoading.classList.add('hidden'); // Ensure loading is hidden
-            planError.classList.add('hidden'); // Ensure error is hidden
+            studyPlanOutput.style.display = 'none'; // Ensure hidden initially
+            planLoading.style.display = 'none'; // Ensure hidden initially
+            planError.style.display = 'none'; // Ensure hidden initially
             generatePlanButton.disabled = true; // Disable button immediately
 
             if (!topic) {
                 studyPlanOutput.textContent = '학습할 수학 단원을 입력해주세요.';
                 studyPlanOutput.style.color = '#e74c3c'; // Set error color
-                studyPlanOutput.classList.remove('hidden'); // Show error message in output area
+                studyPlanOutput.style.display = 'block'; // Show error message in output area
                 generatePlanButton.disabled = false; // Re-enable button
                 return;
             }
 
-            planLoading.classList.remove('hidden'); // Show loading indicator
+            planLoading.style.display = 'block'; // Show loading indicator
             
             try {
                 let chatHistory = [];
@@ -1006,20 +1005,17 @@
 
                     studyPlanOutput.innerHTML = outputHtml;
                     studyPlanOutput.style.color = '#444'; // Set to default success color
-                    studyPlanOutput.classList.remove('hidden'); // Show output
-                    planError.classList.add('hidden'); // Ensure error is hidden
+                    studyPlanOutput.style.display = 'block'; // Show output
                 } else {
                     planError.textContent = '학습 계획을 생성하는 데 실패했습니다. 잠시 후 다시 시도해 주세요.';
-                    planError.classList.remove('hidden'); // Show specific error message
-                    studyPlanOutput.classList.add('hidden'); // Hide output on error
+                    planError.style.display = 'block'; // Show specific error message
                 }
             } catch (error) {
                 console.error('Error fetching study plan:', error);
                 planError.textContent = '네트워크 오류가 발생했습니다. 인터넷 연결을 확인해 주세요.';
-                planError.classList.remove('hidden'); // Show network error message
-                studyPlanOutput.classList.add('hidden'); // Hide output on error
+                planError.style.display = 'block'; // Show network error message
             } finally {
-                planLoading.classList.add('hidden'); // Always hide loading indicator
+                planLoading.style.display = 'none'; // Always hide loading indicator
                 generatePlanButton.disabled = false; // Always re-enable button
             }
         });
